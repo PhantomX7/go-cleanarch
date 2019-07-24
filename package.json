@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "sequelize": "^5.10.2"
+    "mysql2": "^1.6.5",
+    "sequelize": "^5.10.2",
+    "sequelize-cli": "^5.5.0"
   }
 }
