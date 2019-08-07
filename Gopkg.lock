@@ -10,28 +10,6 @@
   version = "v1.0.0"
 
 [[projects]]
-  digest = "1:85732e385c2b94ec825d7c9c626c09ad2eca9d02f134ea942aec21f18d986d60"
-  name = "github.com/bukalapak/apinizer"
-  packages = ["response"]
-  pruneopts = "UT"
-  revision = "7fe9841d2cefebb02224240223b720a01cc9304c"
-  version = "v7.3.0"
-
-[[projects]]
-  branch = "master"
-  digest = "1:6357317003ea172d93b9bfe0211c03e6be4869a32208f734a24cf02ebc503373"
-  name = "github.com/bukalapak/mitra"
-  packages = [
-    "banner",
-    "banner/errors",
-    "banner/repository/mysql",
-    "lib/stringlib",
-    "models",
-  ]
-  pruneopts = "UT"
-  revision = "88e7637e0ced57a1f4d637460d02823c595775ae"
-
-[[projects]]
   digest = "1:ffe9824d294da03b391f44e1ae8281281b4afc1bdaa9588c9097785e3af10cec"
   name = "github.com/davecgh/go-spew"
   packages = ["spew"]
@@ -69,14 +47,6 @@
   version = "v1.4.0"
 
 [[projects]]
-  digest = "1:c116114869f44c711fa5baf9e019fa327101c82ddc4dcc1de84db1f6c43a2d36"
-  name = "github.com/go-ozzo/ozzo-validation"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "106681dbb37bfa3e7683c4c8129cb7f5925ea3e9"
-  version = "v3.5.0"
-
-[[projects]]
   digest = "1:ec6f9bf5e274c833c911923c9193867f3f18788c461f76f05f62bb1510e0ae65"
   name = "github.com/go-sql-driver/mysql"
   packages = ["."]
@@ -91,6 +61,14 @@
   pruneopts = "UT"
   revision = "6c65a5562fc06764971b7c5d05c76c75e84bdbf7"
   version = "v1.3.2"
+
+[[projects]]
+  branch = "master"
+  digest = "1:ae940e9156d0d778ce1991bcc99e58fa5ca2790ddf7c5f0bc05385854416f7a6"
+  name = "github.com/jinzhu/copier"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "976e0346caa839d22a17f8031a96bcd0870c0128"
 
 [[projects]]
   digest = "1:09424e4abeba1d2fc80c47c26347a3eed24f9cfd83173131dd048479ca6e041a"
@@ -157,14 +135,6 @@
   version = "1.0.1"
 
 [[projects]]
-  branch = "master"
-  digest = "1:84bd7f8a2e0bcd53ddc33c3b47c34c1fe340c8632cbe928f7f8ae10ec6ecdd62"
-  name = "github.com/mohae/deepcopy"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "c48cc78d482608239f6c4c92a4abd87eb8761c90"
-
-[[projects]]
   digest = "1:0028cb19b2e4c3112225cd871870f2d9cf49b9b4276531f03438a88e94be86fe"
   name = "github.com/pmezard/go-difflib"
   packages = ["difflib"]
@@ -216,6 +186,14 @@
   version = "v0.0.3"
 
 [[projects]]
+  digest = "1:7e704bce17074e862cfe9e4c2849320c2628fc3501b7d0795c589a427ef2bf50"
+  name = "github.com/selvatico/go-mocket"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "c368d4162be502eea110ae12fb85e98567b0f1e6"
+  version = "v1.0.7"
+
+[[projects]]
   digest = "1:8ff03ccc603abb0d7cce94d34b613f5f6251a9e1931eba1a3f9888a9029b055c"
   name = "github.com/stretchr/testify"
   packages = [
@@ -242,37 +220,6 @@
   pruneopts = "UT"
   revision = "23ab95ef5dc3b70286760af84ce2327a2b64ed62"
   version = "v1.1.7"
-
-[[projects]]
-  digest = "1:a5158647b553c61877aa9ae74f4015000294e47981e6b8b07525edcbb0747c81"
-  name = "go.uber.org/atomic"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "df976f2515e274675050de7b3f42545de80594fd"
-  version = "v1.4.0"
-
-[[projects]]
-  digest = "1:60bf2a5e347af463c42ed31a493d817f8a72f102543060ed992754e689805d1a"
-  name = "go.uber.org/multierr"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "3c4937480c32f4c13a875a1829af76c98ca3d40a"
-  version = "v1.1.0"
-
-[[projects]]
-  digest = "1:676160e6a4722b08e0e26b11521d575c2cb2b6f0c679e1ee6178c5d8dee51e5e"
-  name = "go.uber.org/zap"
-  packages = [
-    ".",
-    "buffer",
-    "internal/bufferpool",
-    "internal/color",
-    "internal/exit",
-    "zapcore",
-  ]
-  pruneopts = "UT"
-  revision = "27376062155ad36be76b0f12cf1572a221d3a48c"
-  version = "v1.10.0"
 
 [[projects]]
   branch = "master"
@@ -313,19 +260,18 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/bukalapak/mitra/banner",
-    "github.com/bukalapak/mitra/banner/repository/mysql",
-    "github.com/bukalapak/mitra/models",
     "github.com/gin-contrib/cors",
     "github.com/gin-gonic/gin",
+    "github.com/gin-gonic/gin/binding",
     "github.com/go-sql-driver/mysql",
+    "github.com/jinzhu/copier",
     "github.com/jinzhu/gorm",
     "github.com/julienschmidt/httprouter",
     "github.com/prometheus/client_golang/prometheus/promhttp",
+    "github.com/selvatico/go-mocket",
     "github.com/stretchr/testify/assert",
     "github.com/stretchr/testify/suite",
     "github.com/subosito/gotenv",
-    "go.uber.org/zap",
     "gopkg.in/go-playground/validator.v8",
   ]
   solver-name = "gps-cdcl"

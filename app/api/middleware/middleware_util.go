@@ -22,6 +22,8 @@ func validationErrorToText(e *validator.FieldError) string {
 		return fmt.Sprintf("%s must be %s characters long", e.Field, e.Param)
 	case "unique":
 		return fmt.Sprintf("%s already exist", e.Field)
+	case "gte":
+		return fmt.Sprintf("%s must equal to or greater than %s", e.Field, e.Param)
 	}
 	return fmt.Sprintf("%s is not valid", e.Field)
 }

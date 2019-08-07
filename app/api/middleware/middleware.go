@@ -5,6 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"gopkg.in/go-playground/validator.v8"
 	"net/http"
+	"strings"
 )
 
 type Config struct {
@@ -33,13 +34,19 @@ func (m *Middleware) ErrorHandle() gin.HandlerFunc {
 				case gin.ErrorTypePublic:
 					// Only output public errors if nothing has been written yet
 					if !c.Writer.Written() {
-						c.JSON(c.Writer.Status(), gin.H{"error": e.Error()})
+						// check if it is part of custom error
+						if err, ok := e.Err.(errors.CustomError); ok {
+							c.JSON(err.HTTPCode, gin.H{"error": err.Message})
+						} else {
+							c.JSON(c.Writer.Status(), gin.H{"error": e.Error()})
+						}
+
 					}
 				case gin.ErrorTypeBind:
 					errs := e.Err.(validator.ValidationErrors)
 					list := make(map[string]string)
 					for _, err := range errs {
-						list[err.Field] = validationErrorToText(err)
+						list[strings.ToLower(err.Field)] = validationErrorToText(err)
 					}
 
 					// Make sure we maintain the preset response status
