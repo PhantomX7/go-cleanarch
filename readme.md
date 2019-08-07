@@ -1,8 +1,9 @@
-this project use 
+
 
 how to install
+-
 
-`yarn`
+`yarn` / `npm install`
 
 `sequelize db:create`
 
@@ -10,3 +11,6 @@ how to install
 
 `dep ensure`
 
+`make dev`
+
+too lazy to finish the readme, will update soon
