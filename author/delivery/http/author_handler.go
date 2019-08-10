@@ -64,7 +64,7 @@ func (h *AuthorHandler) Update(c *gin.Context) {
 
 	authorModel, err := h.authorUsecase.Update(authorID, req)
 	if err != nil {
-		_ = c.Error(err).SetType(errors.ErrorTypeUnprocessableEntity)
+		_ = c.Error(err).SetType(gin.ErrorTypePublic)
 		return
 	}
 
@@ -72,7 +72,16 @@ func (h *AuthorHandler) Update(c *gin.Context) {
 }
 
 func (h *AuthorHandler) Index(c *gin.Context) {
-	c.JSON(200, "test")
+	authors, authorPagination, err := h.authorUsecase.Index(request.NewAuthorPaginationConfig(c.Request.URL.Query()))
+	if err != nil {
+		_ = c.Error(err).SetType(gin.ErrorTypePublic)
+		return
+	}
+
+	c.JSON(200, map[string]interface{}{
+		"data": authors,
+		"meta": authorPagination,
+	})
 }
 
 func (h *AuthorHandler) Show(c *gin.Context) {

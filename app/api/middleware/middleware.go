@@ -36,6 +36,7 @@ func (m *Middleware) ErrorHandle() gin.HandlerFunc {
 					if !c.Writer.Written() {
 						// check if it is part of custom error
 						if err, ok := e.Err.(errors.CustomError); ok {
+							// print the underlying error and return the specified message to user
 							c.JSON(err.HTTPCode, gin.H{"error": err.Message})
 						} else {
 							c.JSON(c.Writer.Status(), gin.H{"error": e.Error()})
@@ -56,11 +57,6 @@ func (m *Middleware) ErrorHandle() gin.HandlerFunc {
 					}
 					c.JSON(status, gin.H{"errors": list})
 
-					// below here is custom error
-				case errors.ErrorTypeUnprocessableEntity:
-					response := errors.ErrUnprocessableEntity
-					response.Message = "something went wrong when processing data"
-					c.JSON(response.HTTPCode, response)
 				default:
 					// Log all other errors
 					//rollbar.RequestError(rollbar.ERR, c.Request, e.Err)

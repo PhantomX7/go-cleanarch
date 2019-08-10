@@ -7,6 +7,7 @@ import (
 	"github.com/PhantomX7/go-cleanarch/models"
 	"github.com/PhantomX7/go-cleanarch/util/errors"
 	"github.com/jinzhu/gorm"
+	"log"
 )
 
 type AuthorRepository struct {
@@ -20,11 +21,21 @@ func NewAuthorRepository(db *gorm.DB) author.AuthorRepository {
 }
 
 func (a *AuthorRepository) Insert(author *models.Author) error {
-	return a.db.Create(author).Error
+	err := a.db.Create(author).Error
+	if err != nil {
+		log.Println("error-insert-author:",err)
+		return errors.ErrUnprocessableEntity
+	}
+	return nil
 }
 
 func (a *AuthorRepository) Update(author *models.Author) error {
-	return a.db.Save(author).Error
+	err := a.db.Save(author).Error
+	if err != nil {
+		log.Println("error-update-author:",err)
+		return errors.ErrUnprocessableEntity
+	}
+	return nil
 }
 
 func (a *AuthorRepository) FindAll(config request.PaginationConfig) ([]models.Author, response.AuthorPaginationMeta, error) {
@@ -39,5 +50,10 @@ func (a *AuthorRepository) FindByID(authorID int64) (models.Author, error) {
 		return model, errors.ErrNotFound
 	}
 
-	return model, err
+	if err != nil {
+		log.Println("error-find-author-by-id:", err)
+		return model, errors.ErrUnprocessableEntity
+	}
+
+	return model, nil
 }
