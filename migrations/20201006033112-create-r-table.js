@@ -13,16 +13,6 @@ module.exports = {
           unique: true,
           type: Sequelize.STRING
     },
-    author_id: {
-      allowNull: false,
-          references: {
-        model: {
-          tableName: 'authors',
-        },
-        key: 'id'
-      },
-      type: Sequelize.INTEGER
-    },
     created_at: {
       allowNull: false,
           type: Sequelize.DATE
