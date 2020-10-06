@@ -13,6 +13,16 @@ module.exports = {
           unique: true,
           type: Sequelize.STRING
     },
+    address: {
+      allowNull: true,
+          unique: true,
+          type: Sequelize.STRING
+    },
+    age: {
+      allowNull: true,
+          unique: true,
+          type: Sequelize.STRING
+    },
     created_at: {
       allowNull: false,
           type: Sequelize.DATE
